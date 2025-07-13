@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Make Number Puzzle</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <h1>Make Number Puzzle</h1>
+    <form method="POST">
+        <label>目標値（例: 10）:</label><br>
+        <input type="text" name="target" required value="{{ target|default('') }}"><br><br>
+
+        <label>使用する整数（スペースまたはカンマ区切り）:</label><br>
+        <input type="text" name="numbers" required value="{{ numbers|default('') }}"><br><br>
+
+        <input type="submit" value="解を求める">
+    </form>
+    <br>
+
+    {% if error %}
+    <div class="error">{{ error }}</div>
+    {% endif %}
+
+    {% if results %}
+    <h2>結果（最大10通り）：</h2>
+    <ul>
+        {% for r in results %}
+        <li>{{ r }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</body>
+
+</html>
