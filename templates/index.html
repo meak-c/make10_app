@@ -1,15 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Make Number Puzzle</title>
+    <title>数字パズル（Make10）</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 <body>
-    <h1>Make Number Puzzle</h1>
+    <h1>数字パズル（Make10）</h1>
+
+    <p>指定した整数の組み合わせと四則演算（＋−×÷）を使って、目標の数を作るパズルです。</p>
+
+    <h2>使い方</h2>
+    <ul>
+        <li>目標値を指定します（例：10）</li>
+        <li>使いたい整数をスペースまたはカンマで区切って入力します（例：1 3 4 6）</li>
+        <li>「解を求める」を押すと、10を作る式が最大10通り表示されます</li>
+    </ul>
+
     <form method="POST">
         <label>目標値（例: 10）:</label><br>
         <input type="text" name="target" required value="{{ target|default('') }}"><br><br>

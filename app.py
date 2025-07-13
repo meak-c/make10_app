@@ -12,6 +12,7 @@ def index():
     error = None
     target = ''
     numbers_raw = ''
+
     if request.method == 'POST':
         target = request.form['target']
         numbers_raw = request.form['numbers']
@@ -22,8 +23,11 @@ def index():
                 error = "2つ以上の数値を入力してください。"
             else:
                 results = solve(target_val, numbers)
+                if not results:
+                    error = "条件を満たす式は見つかりませんでした。"
         except ValueError:
             error = "入力が正しくありません。"
+
     return render_template('index.html',
                            results=results,
                            error=error,
